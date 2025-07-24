@@ -23,3 +23,6 @@ echo "✅ Installation complete! :)"
 echo "🔁 The fan speed script will now set the fan speeds automatically on boot or reboot. :)"
 echo "🛡️ This script is also persistent and survives OS updates. :)"
 echo "👑 Made with style by DJ Mirano - github.com/Miran20122"
+echo "The system will now reboot to save the changes.."
+
+reboot
