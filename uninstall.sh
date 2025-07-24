@@ -16,6 +16,8 @@ echo ""
 echo "✅ Uninstallation complete!"
 echo "🌀 Fan speed script has been removed and will no longer run at boot."
 echo "👑 Uninstalled with style by DJ Mirano - github.com/Miran20122"
-echo "The system will now reboot to save the changes.."
 
+echo ""
+echo "♻️  Rebooting system in 3 seconds..."
+sleep 3
 reboot
