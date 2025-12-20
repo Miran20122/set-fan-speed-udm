@@ -28,6 +28,4 @@ echo "🛡️ This script is also persistent and survives system updates."
 echo "👑 Made with style by DJ Mirano - github.com/Miran20122"
 
 echo ""
-echo "♻️  Rebooting system in 3 seconds..."
-sleep 3
-reboot
+echo "♻️  You need to reboot the system for it to activate"
