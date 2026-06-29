@@ -1,5 +1,5 @@
 #!/bin/sh
-# Auto-installer for DJ Mirano's UDM Fan Speed Script (crontab version)
+# Auto-installer for DJ Mirano's UDM Fan Speed Script
 
 echo "==============================================="
 echo "  🌬️  DJ Mirano's UDM Fan Speed Installer"
