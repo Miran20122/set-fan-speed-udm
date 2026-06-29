@@ -7,7 +7,7 @@ Perfect for reducing noise or optimizing cooling for your HDDs and CPU — all w
 
 ## 🚀 Features
 
-- ✅ Sets custom fan speeds for CPU and HDD
+- ✅ Sets fan speeds of the CPU and HDD to 70% and 80%
 - 🔁 Runs automatically at boot/reboot via `crontab`
 - 🛡️ Persistent through system/firmware updates
 - ⚙️ Simple to install and uninstall via SSH
