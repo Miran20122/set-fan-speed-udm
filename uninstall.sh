@@ -18,12 +18,11 @@ rm -f /etc/persistent/on_boot.d/set-fan-speed.sh
 
 crontab -l 2>/dev/null | grep -Fv "set-fan-speed.sh" | crontab -
 
-echo ""
-echo "✅ Uninstallation complete!"
-echo "🌀 Fan speed script and boot services have been removed."
-echo "👑 Uninstalled with style by DJ Mirano - github.com/Miran20122"
+for pwm in /sys/class/hwmon/hwmon*/pwm*_enable; do
+  [ -w "$pwm" ] && echo 2 > "$pwm" 2>/dev/null
+done
 
 echo ""
-echo "♻️  Rebooting system in 3 seconds..."
-sleep 3
-reboot
+echo "✅ Uninstallation complete!"
+echo "🌀 Fan speed script removed and fans returned to automatic control."
+echo "👑 Uninstalled with style by DJ Mirano - github.com/Miran20122"
