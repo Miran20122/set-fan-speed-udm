@@ -1,5 +1,4 @@
 #!/bin/sh
-# Auto-installer for DJ Mirano's UDM Fan Speed Script
 
 echo "==============================================="
 echo "  🌬️  DJ Mirano's UDM Fan Speed Installer"
@@ -8,25 +7,38 @@ echo ""
 echo "📦 Installing fan speed script..."
 echo ""
 
-# Create the persistent boot directory if it doesn't exist
-mkdir -p /etc/persistent/on_boot.d/
+mkdir -p /data/on_boot.d
+mkdir -p /data/systemd
 
-# Download the fan speed script
-curl -fsSL https://raw.githubusercontent.com/Miran20122/set-fan-speed-udm/main/set-fan-speed.sh -o /etc/persistent/on_boot.d/set-fan-speed.sh
+curl -fsSL https://raw.githubusercontent.com/Miran20122/set-fan-speed-udm/main/set-fan-speed.sh -o /data/on_boot.d/set-fan-speed.sh
+chmod +x /data/on_boot.d/set-fan-speed.sh
 
-# Make the script executable
-chmod +x /etc/persistent/on_boot.d/set-fan-speed.sh
+cat << 'EOF' > /data/systemd/udm-fan-speed.service
+[Unit]
+Description=DJ Mirano UDM Fan Speed Service
+After=network.target
 
-# Add the script to crontab if it's not already there
-CRON_LINE="@reboot /etc/persistent/on_boot.d/set-fan-speed.sh"
+[Service]
+Type=oneshot
+ExecStart=/data/on_boot.d/set-fan-speed.sh
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+ln -sf /data/systemd/udm-fan-speed.service /etc/systemd/system/udm-fan-speed.service
+systemctl daemon-reload
+systemctl enable udm-fan-speed.service
+
+CRON_LINE="@reboot /data/on_boot.d/set-fan-speed.sh"
 (crontab -l 2>/dev/null | grep -Fv "$CRON_LINE" ; echo "$CRON_LINE") | crontab -
 
 echo ""
-echo "🚀 Starting the fan speed service now..."
-/etc/persistent/on_boot.d/set-fan-speed.sh
+echo "🚀 Starting fan speed service..."
+systemctl start udm-fan-speed.service
 
 echo ""
-echo "✅ Installation complete and service activated!"
-echo "🔁 The fan speed script will also run automatically on every future boot or reboot."
-echo "🛡️ This setup is persistent and survives system updates."
+echo "✅ Installation complete!"
+echo "🔁 Fan speeds will now apply on every boot, restart, and update."
 echo "👑 Made with style by DJ Mirano - github.com/Miran20122"
