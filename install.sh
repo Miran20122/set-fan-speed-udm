@@ -22,10 +22,11 @@ CRON_LINE="@reboot /etc/persistent/on_boot.d/set-fan-speed.sh"
 (crontab -l 2>/dev/null | grep -Fv "$CRON_LINE" ; echo "$CRON_LINE") | crontab -
 
 echo ""
-echo "✅ Installation complete!"
-echo "🔁 The fan speed script will now set the fan speeds automatically on boot or reboot."
-echo "🛡️ This script is also persistent and survives system updates."
-echo "👑 Made with style by DJ Mirano - github.com/Miran20122"
+echo "🚀 Starting the fan speed service now..."
+/etc/persistent/on_boot.d/set-fan-speed.sh
 
 echo ""
-echo "♻️  You need to reboot the system for it to activate"
+echo "✅ Installation complete and service activated!"
+echo "🔁 The fan speed script will also run automatically on every future boot or reboot."
+echo "🛡️ This setup is persistent and survives system updates."
+echo "👑 Made with style by DJ Mirano - github.com/Miran20122"
