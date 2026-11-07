@@ -20,7 +20,7 @@ crontab -l 2>/dev/null | grep -Fv "set-fan-speed.sh" | crontab -
 
 echo 2 > /sys/class/hwmon/hwmon0/device/pwm1_enable 2>/dev/null
 echo 2 > /sys/class/hwmon/hwmon0/device/pwm2_enable 2>/dev/null
-systemctl restart ubnt-fan-speed 2>/dev/null || systemctl restart utermd 2>/dev/null
+systemctl restart ubnt-fan-speed 2>/dev/null || systemctl restart ubnt-thermal 2>/dev/null || true
 
 echo ""
 echo "✅ Uninstallation complete!"
