@@ -18,9 +18,9 @@ rm -f /etc/persistent/on_boot.d/set-fan-speed.sh
 
 crontab -l 2>/dev/null | grep -Fv "set-fan-speed.sh" | crontab -
 
-for pwm in /sys/class/hwmon/hwmon*/pwm*_enable; do
-  [ -w "$pwm" ] && echo 2 > "$pwm" 2>/dev/null
-done
+echo 2 > /sys/class/hwmon/hwmon0/device/pwm1_enable 2>/dev/null
+echo 2 > /sys/class/hwmon/hwmon0/device/pwm2_enable 2>/dev/null
+systemctl restart ubnt-fan-speed 2>/dev/null || systemctl restart utermd 2>/dev/null
 
 echo ""
 echo "✅ Uninstallation complete!"
