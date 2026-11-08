@@ -21,7 +21,7 @@ Perfect for reducing noise or optimizing cooling for your HDDs and CPU — start
 2. Run the following command:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/Miran20122/set-fan-speed-udm/main/install.sh | sh
+curl -fsSL https://raw.githubusercontent.com/therealdjmirano/set-fan-speed-udm/main/install.sh | sh
 ```
 
 ---
@@ -32,5 +32,5 @@ curl -fsSL https://raw.githubusercontent.com/Miran20122/set-fan-speed-udm/main/i
 2. Run the following command:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/Miran20122/set-fan-speed-udm/main/uninstall.sh | sh
+curl -fsSL https://raw.githubusercontent.com/therealdjmirano/set-fan-speed-udm/main/uninstall.sh | sh
 ```
